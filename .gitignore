@@ -1,5 +1,5 @@
-/google
+/include
+/lib
 *.exe
-*.so
 *.txt
 test*
