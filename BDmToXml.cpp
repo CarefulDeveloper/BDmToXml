@@ -64,11 +64,13 @@ void ConvertToXML(const DmSegMobileReply &danmaku_seg, char *&fileName, const Pa
 					<< elem.weight() << "\">"
 					<< String_TO_UTF8(content) << "</d>" << endl;
 		*/
-		output << "<d p=\"" << elem.progress() / 1000.0 << ","
+		int32_t progress = elem.progress() + params.offset;
+		if(progress < 0) progress = 0;
+		output << "<d p=\"" << progress / 1000.0 << ","
 			   << elem.mode() << ","
 			   << elem.fontsize() << ","
 			   << elem.color() << ","
-			   << elem.ctime() + params.offset << ","
+			   << elem.ctime() << ","
 			   << elem.pool() << ","
 			   << elem.midhash() << ","
 			   << elem.idstr() << ","
@@ -119,7 +121,7 @@ int main(int argc, char *argv[])
 		cout << "    "
 			 << "chatID=string[\"\"]:指定string值的数字作为弹幕的chatid" << endl;
 		cout << "    "
-			 << "offset=long long[0]:设置弹幕的发送时间偏移量" << endl;
+			 << "offset=int[0]:设置弹幕的发送时间偏移量" << endl;
 		cout << ">>示例：" << endl
 			 << "    " << argv[0] << " ./input.so|./input2.so output.xml chat_id=1008611|offset=12" << endl;
 		cout << endl

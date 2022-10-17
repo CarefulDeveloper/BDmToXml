@@ -12,15 +12,15 @@ static Result<string> Check_Chat_ID(string value)
     }
 }
 
-static Result<long long> Check_Offset(string value)
+static Result<int> Check_Offset(string value)
 {
     if (String_Is_Number(value))
     {
-        return Result<long long>(ResultType::SUCCESS, _atoi64(value.data()));
+        return Result<int>(ResultType::SUCCESS, atoi(value.data()));
     }
     else
     {
-        return Result<long long>(string("输入的\"" + value + "\"不是一个数字"), ResultType::ERROR);
+        return Result<int>(string("输入的\"" + value + "\"不是一个数字"), ResultType::ERROR);
     }
 }
 

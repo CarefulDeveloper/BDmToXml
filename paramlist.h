@@ -18,15 +18,15 @@ class Params
 public:
 	// 在处理这些参数的实际变量名和默认值
 	string chatID = "";
-	long long offset = 0;
+	int offset = 0;
 
 	Params() {}
 
-	Params(string chatID, long long offset) : chatID(chatID), offset(offset)
+	Params(string chatID, int offset) : chatID(chatID), offset(offset)
 	{
 	}
 };
 
 Result<Params> Check_Parm(string args);
 static Result<string> Check_Chat_ID(string value);
-static Result<long long> Check_Offset(string value);
+static Result<int> Check_Offset(string value);
